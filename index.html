@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vocabulary Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        .example {
+            font-style: italic;
+        }
+        .translation {
+            color: #666;
+        }
+        
+        @media screen and (max-width: 768px) {
+            table, thead, tbody, th, td, tr {
+                display: block;
+            }
+            
+            thead tr {
+                position: absolute;
+                top: -9999px;
+                left: -9999px;
+            }
+            
+            tr {
+                margin-bottom: 15px;
+            }
+            
+            td {
+                border: none;
+                position: relative;
+                padding-left: 50%;
+            }
+            
+            td:before {
+                position: absolute;
+                top: 6px;
+                left: 6px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                content: attr(data-label);
+                font-weight: bold;
+            }
+        }
+    </style>
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th>Từ vựng</th>
+                <th>Phiên âm</th>
+                <th>Nghĩa</th>
+                <th>Ví dụ & Dịch nghĩa</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td data-label="Từ vựng">cohort</td>
+                <td data-label="Phiên âm">/ˈkəʊhɔːrt/</td>
+                <td data-label="Nghĩa">Nhóm người có chung đặc điểm</td>
+                <td data-label="Ví dụ & Dịch nghĩa">
+                    <p class="example">"Half of the 34 types studied showed a "birth cohort effect""</p>
+                    <p class="translation">"Một nửa trong số 34 loại được nghiên cứu cho thấy "hiệu ứng đoàn hệ sinh""</p>
+                </td>
+            </tr>
+            <tr>
+                <td data-label="Từ vựng">metastasise</td>
+                <td data-label="Phiên âm">/məˈtæstəsaɪz/</td>
+                <td data-label="Nghĩa">Di căn (về ung thư)</td>
+                <td data-label="Ví dụ & Dịch nghĩa">
+                    <p class="example">"As the disease itself metastasises into something unfamiliar"</p>
+                    <p class="translation">"Khi bản thân căn bệnh này di căn thành một thứ không quen thuộc"</p>
+                </td>
+            </tr>
+            <!-- Thêm các hàng khác tương tự -->
+        </tbody>
+    </table>
+</body>
+</html>
