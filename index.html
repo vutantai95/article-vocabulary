@@ -1,3 +1,6 @@
+Dưới đây là bảng từ vựng được chuyển thành định dạng HTML và CSS để dễ nhìn hơn:
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,17 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Vocabulary Table</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
-        }
         table {
             border-collapse: collapse;
             width: 100%;
-            max-width: 1000px;
+            max-width: 800px;
             margin: 20px auto;
+            font-family: Arial, sans-serif;
         }
         th, td {
             border: 1px solid #ddd;
@@ -35,72 +33,109 @@
         .translation {
             color: #666;
         }
-        
-        @media screen and (max-width: 768px) {
-            table, thead, tbody, th, td, tr {
-                display: block;
-            }
-            
-            thead tr {
-                position: absolute;
-                top: -9999px;
-                left: -9999px;
-            }
-            
-            tr {
-                margin-bottom: 15px;
-            }
-            
-            td {
-                border: none;
-                position: relative;
-                padding-left: 50%;
-            }
-            
-            td:before {
-                position: absolute;
-                top: 6px;
-                left: 6px;
-                width: 45%;
-                padding-right: 10px;
-                white-space: nowrap;
-                content: attr(data-label);
-                font-weight: bold;
-            }
-        }
     </style>
 </head>
 <body>
     <table>
-        <thead>
-            <tr>
-                <th>Từ vựng</th>
-                <th>Phiên âm</th>
-                <th>Nghĩa</th>
-                <th>Ví dụ & Dịch nghĩa</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td data-label="Từ vựng">cohort</td>
-                <td data-label="Phiên âm">/ˈkəʊhɔːrt/</td>
-                <td data-label="Nghĩa">Nhóm người có chung đặc điểm</td>
-                <td data-label="Ví dụ & Dịch nghĩa">
-                    <p class="example">"Half of the 34 types studied showed a "birth cohort effect""</p>
-                    <p class="translation">"Một nửa trong số 34 loại được nghiên cứu cho thấy "hiệu ứng đoàn hệ sinh""</p>
-                </td>
-            </tr>
-            <tr>
-                <td data-label="Từ vựng">metastasise</td>
-                <td data-label="Phiên âm">/məˈtæstəsaɪz/</td>
-                <td data-label="Nghĩa">Di căn (về ung thư)</td>
-                <td data-label="Ví dụ & Dịch nghĩa">
-                    <p class="example">"As the disease itself metastasises into something unfamiliar"</p>
-                    <p class="translation">"Khi bản thân căn bệnh này di căn thành một thứ không quen thuộc"</p>
-                </td>
-            </tr>
-            <!-- Thêm các hàng khác tương tự -->
-        </tbody>
+        <tr>
+            <th>Từ vựng</th>
+            <th>Phiên âm</th>
+            <th>Nghĩa</th>
+            <th>Ví dụ & Dịch nghĩa</th>
+        </tr>
+        <tr>
+            <td>cohort</td>
+            <td>/ˈkəʊhɔːrt/</td>
+            <td>Nhóm người có chung đặc điểm</td>
+            <td>
+                <p class="example">"Half of the 34 types studied showed a "birth cohort effect""</p>
+                <p class="translation">"Một nửa trong số 34 loại được nghiên cứu cho thấy "hiệu ứng đoàn hệ sinh""</p>
+            </td>
+        </tr>
+        <tr>
+            <td>metastasise</td>
+            <td>/məˈtæstəsaɪz/</td>
+            <td>Di căn (về ung thư)</td>
+            <td>
+                <p class="example">"As the disease itself metastasises into something unfamiliar"</p>
+                <p class="translation">"Khi bản thân căn bệnh này di căn thành một thứ không quen thuộc"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>sobering</td>
+            <td>/ˈsəʊbərɪŋ/</td>
+            <td>Khiến người ta tỉnh táo, nghiêm túc</td>
+            <td>
+                <p class="example">"These findings are sobering as they indicate the increased cancer risk"</p>
+                <p class="translation">"Những phát hiện này rất đáng lo ngại vì chúng cho thấy nguy cơ ung thư gia tăng"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>artefact</td>
+            <td>/ˈɑːtɪfækt/</td>
+            <td>Hiện tượng giả tạo, không thật</td>
+            <td>
+                <p class="example">"The increased cancer risk in younger generations is not merely an artefact"</p>
+                <p class="translation">"Nguy cơ ung thư gia tăng ở các thế hệ trẻ hơn không chỉ đơn thuần là hiện tượng giả tạo"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>sedentary</td>
+            <td>/ˈsed(ə)nt(ə)ri/</td>
+            <td>Ít vận động</td>
+            <td>
+                <p class="example">"There are likely unidentified risk factors but there are also known risk factors, like sedentary behaviour"</p>
+                <p class="translation">"Có thể có những yếu tố nguy cơ chưa được xác định nhưng cũng có những yếu tố nguy cơ đã biết, như lối sống ít vận động"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>microbiome</td>
+            <td>/ˌmaɪkrəʊˈbaɪəʊm/</td>
+            <td>Hệ vi sinh vật</td>
+            <td>
+                <p class="example">"Those same factors could be disrupting the gut microbiome"</p>
+                <p class="translation">"Những yếu tố tương tự đó có thể làm rối loạn hệ vi sinh đường ruột"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>bafflingly</td>
+            <td>/ˈbæflɪŋli/</td>
+            <td>Một cách khó hiểu</td>
+            <td>
+                <p class="example">"Bafflingly, many of the new clinic's young patients are in good shape"</p>
+                <p class="translation">"Điều đáng ngạc nhiên là nhiều bệnh nhân trẻ của phòng khám mới này đều có sức khỏe tốt"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>carcinogen</td>
+            <td>/kɑːˈsɪnədʒən/</td>
+            <td>Chất gây ung thư</td>
+            <td>
+                <p class="example">"That is prompting a hunt for environmental carcinogens"</p>
+                <p class="translation">"Điều đó đang thúc đẩy việc tìm kiếm các chất gây ung thư môi trường"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>ingested</td>
+            <td>/ɪnˈdʒestɪd/</td>
+            <td>Được hấp thụ, tiêu thụ</td>
+            <td>
+                <p class="example">"Microplastics, now found everywhere and ingested from infancy onwards"</p>
+                <p class="translation">"Vi nhựa, hiện được tìm thấy ở khắp mọi nơi và bị hấp thụ từ khi còn nhỏ"</p>
+            </td>
+        </tr>
+        <tr>
+            <td>agonise</td>
+            <td>/ˈæɡənaɪz/</td>
+            <td>Lo lắng, đau đầu</td>
+            <td>
+                <p class="example">"Experts agonise over doing something similar for colorectal cancer"</p>
+                <p class="translation">"Các chuyên gia đang lo lắng về việc làm điều tương tự đối với ung thư đại trực tràng"</p>
+            </td>
+        </tr>
     </table>
 </body>
 </html>
+```
+
+Bạn có thể sao chép mã này và lưu thành file HTML để xem kết quả trong trình duyệt web. Bảng này sẽ hiển thị đẹp mắt và dễ đọc hơn với các màu sắc và định dạng đã được áp dụng.​​​​​​​​​​​​​​​​
