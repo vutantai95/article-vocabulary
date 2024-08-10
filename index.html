@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary Matching Game</title>
+    <title>Trò chơi nối từ ngẫu nhiên</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,67 +23,130 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            width: 200px;
         }
-        .word, .definition {
+        .item {
             margin: 10px 0;
             padding: 10px;
             background-color: #e0e0e0;
             border-radius: 5px;
-            cursor: move;
+            cursor: pointer;
         }
-        .word.correct, .definition.correct {
+        .selected {
+            background-color: #a0d0ff;
+        }
+        .correct {
             background-color: #a0ffa0;
+        }
+        #message {
+            text-align: center;
+            margin-top: 20px;
+            font-weight: bold;
         }
     </style>
 </head>
 <body>
-    <div class="game-container">
-        <div class="column" id="words">
-            <div class="word" draggable="true" data-word="cohort">cohort</div>
-            <div class="word" draggable="true" data-word="metastasise">metastasise</div>
-            <div class="word" draggable="true" data-word="sobering">sobering</div>
-            <div class="word" draggable="true" data-word="artefact">artefact</div>
-            <div class="word" draggable="true" data-word="sedentary">sedentary</div>
-            <div class="word" draggable="true" data-word="microbiome">microbiome</div>
-            <div class="word" draggable="true" data-word="bafflingly">bafflingly</div>
-            <div class="word" draggable="true" data-word="carcinogen">carcinogen</div>
-            <div class="word" draggable="true" data-word="ingested">ingested</div>
-            <div class="word" draggable="true" data-word="agonise">agonise</div>
+    <div>
+        <div class="game-container">
+            <div class="column" id="words"></div>
+            <div class="column" id="definitions"></div>
         </div>
-        <div class="column" id="definitions">
-            <div class="definition" data-word="cohort">Nhóm người có chung đặc điểm</div>
-            <div class="definition" data-word="metastasise">Di căn (về ung thư)</div>
-            <div class="definition" data-word="sobering">Khiến người ta tỉnh táo, nghiêm túc</div>
-            <div class="definition" data-word="artefact">Hiện tượng giả tạo, không thật</div>
-            <div class="definition" data-word="sedentary">Ít vận động</div>
-            <div class="definition" data-word="microbiome">Hệ vi sinh vật</div>
-            <div class="definition" data-word="bafflingly">Một cách khó hiểu</div>
-            <div class="definition" data-word="carcinogen">Chất gây ung thư</div>
-            <div class="definition" data-word="ingested">Được hấp thụ, tiêu thụ</div>
-            <div class="definition" data-word="agonise">Lo lắng, đau đầu</div>
-        </div>
+        <div id="message"></div>
     </div>
 
     <script>
-        let dragged;
+        const vocabulary = [
+            {word: "cohort", definition: "Nhóm người có chung đặc điểm"},
+            {word: "metastasise", definition: "Di căn (về ung thư)"},
+            {word: "sobering", definition: "Khiến người ta tỉnh táo, nghiêm túc"},
+            {word: "artefact", definition: "Hiện tượng giả tạo, không thật"},
+            {word: "sedentary", definition: "Ít vận động"},
+            {word: "microbiome", definition: "Hệ vi sinh vật"},
+            {word: "bafflingly", definition: "Một cách khó hiểu"},
+            {word: "carcinogen", definition: "Chất gây ung thư"},
+            {word: "ingested", definition: "Được hấp thụ, tiêu thụ"},
+            {word: "agonise", definition: "Lo lắng, đau đầu"}
+        ];
 
-        document.addEventListener("dragstart", function(event) {
-            dragged = event.target;
-        });
-
-        document.addEventListener("dragover", function(event) {
-            event.preventDefault();
-        });
-
-        document.addEventListener("drop", function(event) {
-            event.preventDefault();
-            if (event.target.className === "definition") {
-                if (dragged.dataset.word === event.target.dataset.word) {
-                    dragged.classList.add("correct");
-                    event.target.classList.add("correct");
-                    dragged.draggable = false;
-                }
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
             }
+        }
+
+        function initializeGame() {
+            const wordsContainer = document.getElementById("words");
+            const definitionsContainer = document.getElementById("definitions");
+            
+            shuffleArray(vocabulary);
+            
+            vocabulary.forEach((item, index) => {
+                const wordElement = document.createElement("div");
+                wordElement.classList.add("item");
+                wordElement.textContent = item.word;
+                wordElement.dataset.index = index;
+                wordsContainer.appendChild(wordElement);
+
+                const definitionElement = document.createElement("div");
+                definitionElement.classList.add("item");
+                definitionElement.textContent = item.definition;
+                definitionElement.dataset.index = index;
+                definitionsContainer.appendChild(definitionElement);
+            });
+        }
+
+        let selectedWord = null;
+        let selectedDefinition = null;
+        let correctPairs = 0;
+
+        function handleSelection(element, isWord) {
+            if (isWord) {
+                if (selectedWord) selectedWord.classList.remove("selected");
+                selectedWord = element;
+            } else {
+                if (selectedDefinition) selectedDefinition.classList.remove("selected");
+                selectedDefinition = element;
+            }
+            element.classList.add("selected");
+
+            if (selectedWord && selectedDefinition) {
+                checkPair();
+            }
+        }
+
+        function checkPair() {
+            if (selectedWord.dataset.index === selectedDefinition.dataset.index) {
+                selectedWord.classList.remove("selected");
+                selectedDefinition.classList.remove("selected");
+                selectedWord.classList.add("correct");
+                selectedDefinition.classList.add("correct");
+                selectedWord.onclick = null;
+                selectedDefinition.onclick = null;
+                selectedWord = null;
+                selectedDefinition = null;
+                correctPairs++;
+                if (correctPairs === vocabulary.length) {
+                    document.getElementById("message").textContent = "Chúc mừng! Bạn đã hoàn thành trò chơi!";
+                }
+            } else {
+                setTimeout(() => {
+                    selectedWord.classList.remove("selected");
+                    selectedDefinition.classList.remove("selected");
+                    selectedWord = null;
+                    selectedDefinition = null;
+                }, 500);
+            }
+        }
+
+        initializeGame();
+
+        document.querySelectorAll("#words .item").forEach(item => {
+            item.onclick = () => handleSelection(item, true);
+        });
+
+        document.querySelectorAll("#definitions .item").forEach(item => {
+            item.onclick = () => handleSelection(item, false);
         });
     </script>
 </body>
