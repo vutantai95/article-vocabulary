@@ -3,133 +3,88 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vocabulary Table</title>
+    <title>Vocabulary Matching Game</title>
     <style>
-        table {
-            border-collapse: collapse;
-            width: 100%;
-            max-width: 800px;
-            margin: 20px auto;
+        body {
             font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
+        .game-container {
+            display: flex;
+            gap: 20px;
         }
-        th {
-            background-color: #f2f2f2;
-            font-weight: bold;
+        .column {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
         }
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
+        .word, .definition {
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #e0e0e0;
+            border-radius: 5px;
+            cursor: move;
         }
-        .example {
-            font-style: italic;
-        }
-        .translation {
-            color: #666;
+        .word.correct, .definition.correct {
+            background-color: #a0ffa0;
         }
     </style>
 </head>
 <body>
-    <table>
-        <tr>
-            <th>Từ vựng</th>
-            <th>Phiên âm</th>
-            <th>Nghĩa</th>
-            <th>Ví dụ & Dịch nghĩa</th>
-        </tr>
-        <tr>
-            <td>cohort</td>
-            <td>/ˈkəʊhɔːrt/</td>
-            <td>Nhóm người có chung đặc điểm</td>
-            <td>
-                <p class="example">"Half of the 34 types studied showed a "birth cohort effect""</p>
-                <p class="translation">"Một nửa trong số 34 loại được nghiên cứu cho thấy "hiệu ứng đoàn hệ sinh""</p>
-            </td>
-        </tr>
-        <tr>
-            <td>metastasise</td>
-            <td>/məˈtæstəsaɪz/</td>
-            <td>Di căn (về ung thư)</td>
-            <td>
-                <p class="example">"As the disease itself metastasises into something unfamiliar"</p>
-                <p class="translation">"Khi bản thân căn bệnh này di căn thành một thứ không quen thuộc"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>sobering</td>
-            <td>/ˈsəʊbərɪŋ/</td>
-            <td>Khiến người ta tỉnh táo, nghiêm túc</td>
-            <td>
-                <p class="example">"These findings are sobering as they indicate the increased cancer risk"</p>
-                <p class="translation">"Những phát hiện này rất đáng lo ngại vì chúng cho thấy nguy cơ ung thư gia tăng"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>artefact</td>
-            <td>/ˈɑːtɪfækt/</td>
-            <td>Hiện tượng giả tạo, không thật</td>
-            <td>
-                <p class="example">"The increased cancer risk in younger generations is not merely an artefact"</p>
-                <p class="translation">"Nguy cơ ung thư gia tăng ở các thế hệ trẻ hơn không chỉ đơn thuần là hiện tượng giả tạo"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>sedentary</td>
-            <td>/ˈsed(ə)nt(ə)ri/</td>
-            <td>Ít vận động</td>
-            <td>
-                <p class="example">"There are likely unidentified risk factors but there are also known risk factors, like sedentary behaviour"</p>
-                <p class="translation">"Có thể có những yếu tố nguy cơ chưa được xác định nhưng cũng có những yếu tố nguy cơ đã biết, như lối sống ít vận động"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>microbiome</td>
-            <td>/ˌmaɪkrəʊˈbaɪəʊm/</td>
-            <td>Hệ vi sinh vật</td>
-            <td>
-                <p class="example">"Those same factors could be disrupting the gut microbiome"</p>
-                <p class="translation">"Những yếu tố tương tự đó có thể làm rối loạn hệ vi sinh đường ruột"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>bafflingly</td>
-            <td>/ˈbæflɪŋli/</td>
-            <td>Một cách khó hiểu</td>
-            <td>
-                <p class="example">"Bafflingly, many of the new clinic's young patients are in good shape"</p>
-                <p class="translation">"Điều đáng ngạc nhiên là nhiều bệnh nhân trẻ của phòng khám mới này đều có sức khỏe tốt"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>carcinogen</td>
-            <td>/kɑːˈsɪnədʒən/</td>
-            <td>Chất gây ung thư</td>
-            <td>
-                <p class="example">"That is prompting a hunt for environmental carcinogens"</p>
-                <p class="translation">"Điều đó đang thúc đẩy việc tìm kiếm các chất gây ung thư môi trường"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>ingested</td>
-            <td>/ɪnˈdʒestɪd/</td>
-            <td>Được hấp thụ, tiêu thụ</td>
-            <td>
-                <p class="example">"Microplastics, now found everywhere and ingested from infancy onwards"</p>
-                <p class="translation">"Vi nhựa, hiện được tìm thấy ở khắp mọi nơi và bị hấp thụ từ khi còn nhỏ"</p>
-            </td>
-        </tr>
-        <tr>
-            <td>agonise</td>
-            <td>/ˈæɡənaɪz/</td>
-            <td>Lo lắng, đau đầu</td>
-            <td>
-                <p class="example">"Experts agonise over doing something similar for colorectal cancer"</p>
-                <p class="translation">"Các chuyên gia đang lo lắng về việc làm điều tương tự đối với ung thư đại trực tràng"</p>
-            </td>
-        </tr>
-    </table>
+    <div class="game-container">
+        <div class="column" id="words">
+            <div class="word" draggable="true" data-word="cohort">cohort</div>
+            <div class="word" draggable="true" data-word="metastasise">metastasise</div>
+            <div class="word" draggable="true" data-word="sobering">sobering</div>
+            <div class="word" draggable="true" data-word="artefact">artefact</div>
+            <div class="word" draggable="true" data-word="sedentary">sedentary</div>
+            <div class="word" draggable="true" data-word="microbiome">microbiome</div>
+            <div class="word" draggable="true" data-word="bafflingly">bafflingly</div>
+            <div class="word" draggable="true" data-word="carcinogen">carcinogen</div>
+            <div class="word" draggable="true" data-word="ingested">ingested</div>
+            <div class="word" draggable="true" data-word="agonise">agonise</div>
+        </div>
+        <div class="column" id="definitions">
+            <div class="definition" data-word="cohort">Nhóm người có chung đặc điểm</div>
+            <div class="definition" data-word="metastasise">Di căn (về ung thư)</div>
+            <div class="definition" data-word="sobering">Khiến người ta tỉnh táo, nghiêm túc</div>
+            <div class="definition" data-word="artefact">Hiện tượng giả tạo, không thật</div>
+            <div class="definition" data-word="sedentary">Ít vận động</div>
+            <div class="definition" data-word="microbiome">Hệ vi sinh vật</div>
+            <div class="definition" data-word="bafflingly">Một cách khó hiểu</div>
+            <div class="definition" data-word="carcinogen">Chất gây ung thư</div>
+            <div class="definition" data-word="ingested">Được hấp thụ, tiêu thụ</div>
+            <div class="definition" data-word="agonise">Lo lắng, đau đầu</div>
+        </div>
+    </div>
+
+    <script>
+        let dragged;
+
+        document.addEventListener("dragstart", function(event) {
+            dragged = event.target;
+        });
+
+        document.addEventListener("dragover", function(event) {
+            event.preventDefault();
+        });
+
+        document.addEventListener("drop", function(event) {
+            event.preventDefault();
+            if (event.target.className === "definition") {
+                if (dragged.dataset.word === event.target.dataset.word) {
+                    dragged.classList.add("correct");
+                    event.target.classList.add("correct");
+                    dragged.draggable = false;
+                }
+            }
+        });
+    </script>
 </body>
 </html>
