@@ -79,19 +79,24 @@
             const wordsContainer = document.getElementById("words");
             const definitionsContainer = document.getElementById("definitions");
             
-            shuffleArray(vocabulary);
+            let shuffledWords = [...vocabulary];
+            let shuffledDefinitions = [...vocabulary];
+            shuffleArray(shuffledWords);
+            shuffleArray(shuffledDefinitions);
             
-            vocabulary.forEach((item, index) => {
+            shuffledWords.forEach((item, index) => {
                 const wordElement = document.createElement("div");
                 wordElement.classList.add("item");
                 wordElement.textContent = item.word;
-                wordElement.dataset.index = index;
+                wordElement.dataset.word = item.word;
                 wordsContainer.appendChild(wordElement);
+            });
 
+            shuffledDefinitions.forEach((item, index) => {
                 const definitionElement = document.createElement("div");
                 definitionElement.classList.add("item");
                 definitionElement.textContent = item.definition;
-                definitionElement.dataset.index = index;
+                definitionElement.dataset.word = item.word;
                 definitionsContainer.appendChild(definitionElement);
             });
         }
@@ -116,7 +121,7 @@
         }
 
         function checkPair() {
-            if (selectedWord.dataset.index === selectedDefinition.dataset.index) {
+            if (selectedWord.dataset.word === selectedDefinition.dataset.word) {
                 selectedWord.classList.remove("selected");
                 selectedDefinition.classList.remove("selected");
                 selectedWord.classList.add("correct");
